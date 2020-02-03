@@ -1,8 +1,8 @@
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
+const scrollHeight = () => document.documentElement.scrollHeight;
 canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-console.log(document.body.innerHeight);
+canvas.height=scrollHeight();
 
 var mouse={
     x:undefined,
@@ -16,8 +16,8 @@ window.addEventListener('mousemove',function(){
 })
 window.addEventListener('resize',function(){
     canvas.width=event.target.innerWidth;
-    canvas.height=event.target.innerHeight;
-    
+    canvas.height=scrollHeight();
+
     init()
 })
 
@@ -45,7 +45,7 @@ window.addEventListener('resize',function(){
 //         if(this.y+this.radius > innerHeight || this.y - this.radius<0){
 //             this.dy=-this.dy;
 //         }
-    
+
 //         this.x+=this.dx;
 //         this.y+=this.dy;
 
@@ -69,7 +69,7 @@ function init(){
     circleArr=[];
     for(var i=0;i<800;i++){
         var x=Math.random()*(innerWidth-radius*2)+radius;
-        var y=Math.random()*(innerHeight-radius*2)+radius;
+        var y=Math.random()*(scrollHeight()-radius*2)+radius;
         var dx=(Math.random()-0.5);
         var dy=(Math.random()-0.5);
         var radius = Math.random()*3+1;
@@ -78,13 +78,13 @@ function init(){
 }
 function animate(){
     requestAnimationFrame(animate);
-    ctx.clearRect(0,0,innerWidth,innerHeight)
+    ctx.clearRect(0,0,innerWidth,scrollHeight())
 
     for(var i=0;i<circleArr.length;i++){
         circleArr[i].update()
     }
-    
- 
+
+
 }
 init()
 animate()
