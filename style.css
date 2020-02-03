@@ -77,8 +77,9 @@ section>div{
     background-color: rgba(0, 0, 0, 0.376);
 }
 section>div>img{
-    
+    max-height: 40vh;
     border-radius: 50%;
+    align-self: center;
 }
 @media (max-width:1200px){
     #logo {

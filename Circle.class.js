@@ -6,8 +6,10 @@ function Circle(x,y,dx,dy,radius){
     this.radius=radius;
     this.minRadius=radius
     this.colorArr=["#320A28","#511730","#8E443D","#CB9173","#E0D68A"]
-    this.color=colorArr[Math.floor(Math.random()*this.colorArr.length)];
-
+    this.color=this.colorArr[Math.floor(Math.random()*this.colorArr.length)];
+    
+    
+    
 
     this.draw=function(){
         ctx.beginPath();
